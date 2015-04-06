@@ -20,4 +20,4 @@ RUN bundle install
 ADD . /myapp
 
 # run script
-CMD [ "bundle",  "exec", "main.rb" ]
+CMD [ "bundle",  "exec", "ruby", "/myapp/main.rb" ]
