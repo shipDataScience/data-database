@@ -9,10 +9,6 @@ options_str = ENV["SDS_PLUGIN_CONFIG_JSON"]
 options = JSON.parse(options_str)
 db_opts = options["database"].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 io_opts = options["io"].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
-STDERR.write db_opts
-STDERR.write  "\n"
-STDERR.write io_opts
-STDERR.write  "\n"
 
 # database
 sql_command      = db_opts[:sql]
@@ -33,9 +29,7 @@ quote_strategy = io_opts[:quoteStrategy]
 uri = "#{driver}://#{user}:#{password}@#{host}:#{port}/#{database_name}"
 
 DB = Sequel.connect(uri)
-data = DB.run(sql_command)
-
-STDERR.write data[0]
+data = DB[sql_command]
 
 CSV.open(path, 'wb', {
     col_sep: delim_char,
