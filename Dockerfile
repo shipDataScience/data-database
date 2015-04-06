@@ -5,8 +5,8 @@ FROM ruby:latest
 RUN apt-get update -qq
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential libpq-dev apt-utils
 
-apt-get install mysql-client postgresql-client libpq-dev libmysql-ruby libmysqlclient-dev
-sudo gem install pg mysql
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-client postgresql-client libpq-dev libmysql-ruby libmysqlclient-dev
+gem install pg mysql
 
 # setup app folders
 RUN mkdir /myapp
@@ -14,7 +14,6 @@ WORKDIR /myapp
 
 # copy over Gemfile and install bundle
 ADD Gemfile /myapp/Gemfile
-ADD Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 
 # copy over remaining app files
