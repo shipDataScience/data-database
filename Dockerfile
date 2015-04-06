@@ -5,7 +5,7 @@ FROM ruby:latest
 RUN apt-get update -qq
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential libpq-dev apt-utils
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-client postgresql-client libpq-dev libmysql-ruby libmysqlclient-dev
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y mysql-client postgresql-client libpq-dev  libmysqlclient-dev
 gem install pg mysql
 
 # setup app folders
