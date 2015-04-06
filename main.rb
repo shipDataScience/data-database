@@ -35,6 +35,8 @@ uri = "#{driver}://#{user}:#{password}@#{host}:#{port}/#{database_name}"
 DB = Sequel.connect(uri)
 data = DB.run(sql_command)
 
+STDERR.write data[0]
+
 CSV.open(path, 'wb', {
     col_sep: delim_char,
     quote_char: quote_char
