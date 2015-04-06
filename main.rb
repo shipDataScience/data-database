@@ -1,4 +1,6 @@
 require 'sequel'
+require 'pg'
+require 'mysql'
 require 'json'
 require 'csv'
 
