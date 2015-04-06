@@ -8,6 +8,10 @@ path = ENV["SDS_OUTPUT_PATH"]
 options_str = ENV["SDS_PLUGIN_CONFIG_JSON"]
 options = JSON.parse(options_str)
 sym_opts = options.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+puts options
+puts "\n"
+puts sym_opts
+puts "\n"
 db_opts = sym_opts[:database]
 io_opts = sym_opts[:io]
 
