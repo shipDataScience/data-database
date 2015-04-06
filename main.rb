@@ -7,13 +7,12 @@ require 'csv'
 path = ENV["SDS_OUTPUT_PATH"]
 options_str = ENV["SDS_PLUGIN_CONFIG_JSON"]
 options = JSON.parse(options_str)
-sym_opts = options.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
-STDERR.write options
+db_opts = options["database"].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+io_opts = options["io"].inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+STDERR.write db_opts
 STDERR.write  "\n"
-STDERR.write sym_opts
+STDERR.write io_opts
 STDERR.write  "\n"
-db_opts = sym_opts[:database]
-io_opts = sym_opts[:io]
 
 # database
 sql_command      = db_opts[:sql]
